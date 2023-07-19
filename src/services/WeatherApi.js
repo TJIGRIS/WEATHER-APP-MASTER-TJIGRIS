@@ -1,6 +1,8 @@
 const APY_KEY = '373a1d63c43d141d8f73c665454fac68'
 
-export async function WeatherApi (search, units = 'standard') {
+// metric, standard
+
+export async function WeatherApi (search, units = 'metric') {
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${search}&units=${units}&appid=${APY_KEY}`
