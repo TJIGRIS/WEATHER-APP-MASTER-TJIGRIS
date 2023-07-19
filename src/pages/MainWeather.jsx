@@ -46,7 +46,11 @@ export function MainWeather () {
             <span>50</span>
             <span>100</span>
           </div>
-          <input className='w-full' type='range' defaultValue={weather[0]?.humidity} />
+          <input
+            className='w-full'
+            type='range'
+            defaultValue={weather[0]?.humidity}
+          />
           <div className='w-full text-accent flex justify-between !text-[12px]'>
             <span></span>
             <span>%</span>

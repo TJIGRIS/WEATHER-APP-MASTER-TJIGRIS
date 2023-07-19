@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState
-} from 'react'
+import { createContext, useContext, useEffect, useReducer } from 'react'
 import { WeatherApi, WeatherApiLocation } from '../services/WeatherApi'
 
 const AuthContext = createContext()
@@ -20,7 +14,7 @@ export function useWeatherContext () {
   return context
 }
 
-const initialState = {
+export const initialState = {
   weather: [],
   search: '',
   location: {
@@ -30,7 +24,9 @@ const initialState = {
 }
 
 export const TYPES_COMMANDS = {
-  setWeather: 'SET_WEATHER'
+  setWeather: 'SET_WEATHER',
+  setSearch: 'SET_SEARCH',
+  setLocation: 'SET_LOCATION'
 }
 
 export const reducer = (state, action) => {
@@ -43,11 +39,25 @@ export const reducer = (state, action) => {
     }
   }
 
+  if (type === TYPES_COMMANDS.setSearch) {
+    return {
+      ...state,
+      search: payload
+    }
+  }
+
+  if (type === TYPES_COMMANDS.setLocation) {
+    return {
+      ...state,
+      location: payload
+    }
+  }
+
   return state
 }
 
 export function useSearch (setWeather) {
-  const [search, setSearch] = useState('')
+  const { search, setSearch } = useWeatherReducer()
 
   const getWeather = async () => {
     if (search === '' || search === undefined || search === null) return
@@ -69,18 +79,21 @@ function useWeatherReducer () {
     dispatch({ type: TYPES_COMMANDS.setWeather, payload })
   }
 
-  return { state, setWeather }
+  const setSearch = (payload) => {
+    dispatch({ type: TYPES_COMMANDS.setSearch, payload })
+  }
+
+  const setLocation = (payload) => {
+    dispatch({ type: TYPES_COMMANDS.setLocation, payload })
+  }
+
+  return { ...state, setWeather, setLocation, setSearch }
 }
 
 export function WeatherContextProvider ({ children }) {
-  // const { state, setWeather } = useWeatherReducer()
+  const { weather, location, setWeather, setLocation } = useWeatherReducer()
 
-  const [weather, setWeather] = useState([])
   const { search, getWeather, changeSearch } = useSearch(setWeather)
-  const [location, setLocation] = useState({
-    latitude: 0,
-    longitude: 0
-  })
 
   const getWeatherApiLocation = async () => {
     const response = await WeatherApiLocation(
