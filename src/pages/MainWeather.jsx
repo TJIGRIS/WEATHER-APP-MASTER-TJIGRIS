@@ -3,23 +3,42 @@ import { useWeatherContext } from '../context/WeatherContexProvider'
 import { TbLocationFilled } from 'react-icons/tb'
 
 export function MainWeather () {
-  const { weather } = useWeatherContext()
+  const { weather, units, setUnits, getWeather } = useWeatherContext()
 
   const next = weather[0]?.nextDays
+
+  const { symbol } = units
+
+  const changeUnitsMetric = () => {
+    if (symbol !== '°C') setUnits({ name: 'metric', symbol: '°C' })
+  }
+
+  const changeUnitsStandard = () => {
+    if (symbol !== '°F') setUnits({ name: 'standard', symbol: '°F' })
+  }
 
   return (
     <main className='w-[981px] mx-auto p-[42px] flex flex-col justify-start items-center'>
       <section className='w-full flex justify-between mb-[66px]'>
         <div></div>
-        <div className='[&>button]:rounded-full [&>button]:w-[40px] [&>button]:h-[40px] [&>button]:bg-text [&>button]:text-black [&>button]:font-bold [&>button]:text-[18px]  flex gap-[12px] '>
-          <button>°C</button>
-          <button>°F</button>
+        <div className='[&>button]:rounded-full [&>button]:w-[40px] [&>button]:h-[40px] [&>button]:text-black [&>button]:font-bold [&>button]:text-[18px] flex gap-[12px] '>
+          <button
+            className={symbol !== '°C' ? '!bg-background-alt' : '!bg-text'}
+            onClick={changeUnitsMetric}>
+            °C
+          </button>
+          <button
+            className={symbol !== '°F' ? '!bg-background-alt' : '!bg-text'}
+            onClick={changeUnitsStandard}>
+            °F
+          </button>
         </div>
       </section>
 
       <section className='w-full grid grid-cols-layout place-items-center gap-10'>
         {next?.map(
-          (item, index) => item.next && <DayWeek key={index} {...item} />
+          (item, index) =>
+            item.next && <DayWeek key={index} {...item} symbol={units.symbol} />
         )}
       </section>
 

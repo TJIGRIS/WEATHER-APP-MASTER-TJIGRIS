@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import { WeatherApiLocation } from '../services/WeatherApi'
 
-export function useLocation (location, setLocation, setWeather) {
+export function useLocation (location, units, inicial, setLocation, setWeather) {
   const getWeatherApiLocation = async () => {
     const response = await WeatherApiLocation(
       location.latitude,
-      location.longitude
+      location.longitude,
+      units.name
     )
 
     setWeather(response)
@@ -13,7 +14,7 @@ export function useLocation (location, setLocation, setWeather) {
 
   useEffect(() => {
     getWeatherApiLocation()
-  }, [location])
+  }, [location, (inicial === false)])
 
   useEffect(() => {
     function getLocation () {
@@ -25,13 +26,14 @@ export function useLocation (location, setLocation, setWeather) {
     }
 
     function showPosition (position) {
-      setLocation((prevLocation) => ({
-        ...prevLocation,
+      setLocation({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
-      }))
+      })
     }
 
     getLocation()
   }, [])
+
+  return { getWeatherApiLocation }
 }

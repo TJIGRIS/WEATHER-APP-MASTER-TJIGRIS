@@ -2,7 +2,7 @@ const APY_KEY = '373a1d63c43d141d8f73c665454fac68'
 
 // metric, standard
 
-export async function WeatherApi (search, units = 'metric') {
+export async function WeatherApi (search, units) {
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${search}&units=${units}&appid=${APY_KEY}`
@@ -17,7 +17,7 @@ export async function WeatherApi (search, units = 'metric') {
   }
 }
 
-export async function WeatherApiLocation (lat, log, units = 'metric') {
+export async function WeatherApiLocation (lat, log, units) {
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${log}&units=${units}&appid=${APY_KEY}`

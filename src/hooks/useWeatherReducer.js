@@ -20,5 +20,25 @@ export function useWeatherReducer () {
     dispatch({ type: TYPES_COMMANDS.setLocation, payload })
   }
 
-  return { ...state, setWeather, setLocation, setSearch }
+  const setToogle = (payload) => {
+    dispatch({ type: TYPES_COMMANDS.setToogle, payload })
+  }
+
+  const setUnits = (payload) => {
+    dispatch({ type: TYPES_COMMANDS.setUnits, payload })
+  }
+
+  const setInicial = (payload) => {
+    dispatch({ type: TYPES_COMMANDS.setInicial, payload })
+  }
+
+  return {
+    ...state,
+    setWeather,
+    setLocation,
+    setSearch,
+    setToogle,
+    setUnits,
+    setInicial
+  }
 }

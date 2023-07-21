@@ -17,12 +17,44 @@ export function useWeatherContext () {
 }
 
 export function WeatherContextProvider ({ children }) {
-  const { weather, location, setWeather, setLocation } = useWeatherReducer()
-  const { search, getWeather, changeSearch } = useSearch(setWeather)
-  useLocation(location, setLocation, setWeather)
+  const {
+    weather,
+    location,
+    toogle,
+    units,
+    inicial,
+    setWeather,
+    setLocation,
+    setToogle,
+    setUnits,
+    setInicial
+  } = useWeatherReducer()
+
+  const { search, getWeather, changeSearch } = useSearch(setWeather, units)
+
+  const { getWeatherApiLocation } = useLocation(
+    location,
+    units,
+    inicial,
+    setLocation,
+    setWeather,
+    setInicial
+  )
 
   return (
-    <AuthContext.Provider value={{ weather, search, changeSearch, getWeather }}>
+    <AuthContext.Provider
+      value={{
+        weather,
+        search,
+        inicial,
+        units,
+        toogle,
+        changeSearch,
+        getWeather,
+        setToogle,
+        setUnits,
+        getWeatherApiLocation
+      }}>
       {children}
     </AuthContext.Provider>
   )

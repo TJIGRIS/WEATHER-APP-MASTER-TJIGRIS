@@ -8,7 +8,7 @@ export default {
         secondary: '#FFEC65',
         accent: '#6E707A',
         background: '#100E1D',
-        // "background-alt": "#1E213A",
+        'background-alt': '#585676',
         text: '#E7E7EB',
         'text-alt': '#A09FB1',
         link: '#0066cc',
