@@ -1,10 +1,10 @@
-import { Aside } from './pages/Aside'
+import { AsideWeather } from './pages/AsideWeather'
 import { MainWeather } from './pages/MainWeather'
 
 function App () {
   return (
-    <div className='flex text-text bg-background font-raleway'>
-      <Aside />
+    <div className='min-h-screen flex bg-background text-text font-raleway font-medium'>
+      <AsideWeather />
       <MainWeather />
     </div>
   )
