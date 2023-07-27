@@ -1,12 +1,15 @@
+import { useWeatherContext } from '../context/WeatherProvider'
 import { ButtonAside } from './ButtonAside'
 import { SearchCityView } from './SearchCityView'
 
 export function SearchCity () {
+  const { isSearch } = useWeatherContext()
+
   return (
     <header className='w-full px-[46px]'>
-      <ButtonAside />
+      {isSearch === false && <ButtonAside />}
 
-      <SearchCityView />
+      {isSearch && <SearchCityView />}
     </header>
   )
 }

@@ -1,7 +1,8 @@
 import { Shower } from '../assets/Img'
 import { MdLocationOn } from 'react-icons/md'
 
-export function InfoAside () {
+export function InfoAside ({ name, main, weather }) {
+  console.log(weather)
   return (
     <main className='grow w-full flex flex-col items-center'>
       <picture className='relative w-full h-72 my-10 grid place-items-center'>
@@ -12,11 +13,11 @@ export function InfoAside () {
 
       <section className='grow flex flex-col justify-between items-center text-center'>
         <div className='flex items-end'>
-          <h1 className='text-[144px]'>15</h1>
+          <h1 className='text-[144px]'>{main?.feels_like}</h1>
           <span className='text-[50px] text-accent mb-8'>°C</span>
         </div>
 
-        <h2 className='text-[36px] text-text-alt font-semibold'>Shower</h2>
+        <h2 className='text-[36px] text-text-alt font-semibold'></h2>
 
         <div className='flex flex-col items-center text-accent text-[18px]'>
           <div className='flex items-center gap-2 mb-[32px]'>
@@ -27,7 +28,7 @@ export function InfoAside () {
 
           <div className='flex items-center gap-2 font-semibold'>
             <MdLocationOn />
-            <p>London</p>
+            <p>{name}</p>
           </div>
         </div>
       </section>

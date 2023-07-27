@@ -1,11 +1,15 @@
 import { InfoAside } from '../components/InfoAside'
 import { SearchCity } from '../components/SearchCity'
+import { useWeatherContext } from '../context/WeatherProvider'
 
 export function AsideWeather () {
+  const { isSearch, allWeather } = useWeatherContext()
+
   return (
-    <aside className='w-[459px] py-[42px] bg-primary h-[100vh] flex flex-col justify-between items-center'>
+    <aside className='min-w-[459px] py-[42px] bg-primary h-[100vh] flex flex-col justify-between items-center'>
       <SearchCity />
-      <InfoAside />
+
+      {isSearch === false && <InfoAside {...allWeather} />}
     </aside>
   )
 }

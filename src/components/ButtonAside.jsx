@@ -1,9 +1,16 @@
 import { BiCurrentLocation } from 'react-icons/bi'
+import { useWeatherContext } from '../context/WeatherProvider'
 
 export function ButtonAside () {
+  const { isSearch, setIsSearch } = useWeatherContext()
+
+  const handleOpen = () => {
+    setIsSearch(!isSearch)
+  }
+
   return (
     <section className='flex justify-between items-center'>
-      <button className='h-10 bg-accent px-[20px]'>
+      <button className='h-10 bg-accent px-[20px]' onClick={handleOpen}>
         <p>Search for places</p>
       </button>
 

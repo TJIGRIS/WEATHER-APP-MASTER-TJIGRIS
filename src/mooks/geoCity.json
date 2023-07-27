@@ -1,0 +1,79 @@
+[
+  {
+    "name": "New York County",
+    "local_names": {
+      "hi": "न्यूयॊर्क्",
+      "de": "New York",
+      "is": "Nýja Jórvík",
+      "gl": "Nova York",
+      "fr": "New York",
+      "be": "Нью-Ёрк",
+      "cs": "New York",
+      "te": "న్యూయొర్క్",
+      "pt": "Nova Iorque",
+      "ar": "نيويورك",
+      "pl": "Nowy Jork",
+      "ca": "Nova York",
+      "uk": "Нью-Йорк",
+      "en": "New York",
+      "vi": "New York",
+      "ru": "Нью-Йорк",
+      "cy": "Efrog Newydd",
+      "ja": "ニューヨーク",
+      "zh": "纽约/紐約",
+      "el": "Νέα Υόρκη",
+      "oc": "Nòva York",
+      "ko": "뉴욕",
+      "it": "New York",
+      "fa": "نیویورک",
+      "he": "ניו יורק",
+      "kn": "ನ್ಯೂಯೊರ್ಕ್",
+      "es": "Nueva York",
+      "eo": "Novjorko"
+    },
+    "lat": 40.7127281,
+    "lon": -74.0060152,
+    "country": "US",
+    "state": "New York"
+  },
+  {
+    "name": "New York",
+    "local_names": {
+      "en": "New York",
+      "ta": "நியூ யோர்க்"
+    },
+    "lat": 55.0252998,
+    "lon": -1.4869496,
+    "country": "GB",
+    "state": "England"
+  },
+  {
+    "name": "New York",
+    "local_names": {
+      "ta": "நியூ யோர்க்",
+      "en": "New York"
+    },
+    "lat": 39.6852874,
+    "lon": -93.9268836,
+    "country": "US",
+    "state": "Missouri"
+  },
+  {
+    "name": "New York",
+    "lat": 7.9631123,
+    "lon": -11.7636869,
+    "country": "SL",
+    "state": "Bo District"
+  },
+  {
+    "name": "Lake Oswego",
+    "local_names": {
+      "en": "Lake Oswego",
+      "ja": "レイクオスウィーゴ"
+    },
+    "lat": 45.4206749,
+    "lon": -122.670649,
+    "country": "US",
+    "state": "Oregon"
+  }
+]
