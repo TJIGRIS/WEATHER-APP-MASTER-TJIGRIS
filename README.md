@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{github.com/TJIGRIS/TODO-APP-TJIGRIS.git}">
+    <a href="https://github.com/TJIGRIS/WEATHER-APP-MASTER-TJIGRIS.git">
       Solution
     </a>
     <span> | </span>
