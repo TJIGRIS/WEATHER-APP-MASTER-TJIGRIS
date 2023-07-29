@@ -4,7 +4,7 @@ import { HighlightsWeather } from '../components/HighlightsWeather'
 
 export function MainWeather () {
   return (
-    <div className='px-[142px] py-[22px] w-full'>
+    <div className='px-[16px] 2xl:px-[50px] 3xl:px-[150px] 4xl:px-[250px] py-[22px] w-full'>
       <section className='flex flex-col justify-between h-full'>
         <ButtonsMain />
 
@@ -14,7 +14,7 @@ export function MainWeather () {
         </main>
 
         <footer>
-          <p className='text-center text-text-alt'>
+          <p className='text-center mt-10 3xl:mt-5 4xl:mt-0 text-text-alt'>
             created by <span className='underline text-text'>TJIGRIS</span> -
             devChallenges.io
           </p>

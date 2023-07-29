@@ -5,6 +5,7 @@ import { useWeatherContext } from '../context/WeatherProvider'
 const City = ({
   name,
   country,
+  state,
   lat,
   lon,
   saveWeather,
@@ -22,7 +23,7 @@ const City = ({
       <button
         className='w-full h-16 flex items-center justify-between text-left py-3 px-5 text-text transition-colors border-[1px] border-primary group-hover:border-accent duration-300 ease-linear text-[16px]'
         onClick={handleSaveWeather}>
-        {name}, {country}
+        {name}, {state}, {country}
         <MdOutlineKeyboardArrowRight
           size={24}
           className='fill-accent opacity-0 duration-300 ease-linear group-hover:opacity-100'

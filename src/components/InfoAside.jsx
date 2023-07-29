@@ -8,7 +8,7 @@ export function InfoAside () {
 
   return (
     <main className='grow w-full flex flex-col items-center'>
-      <picture className='relative w-full h-72 my-10 grid place-items-center'>
+      <picture className='relative w-full h-40 lg:h-72 my-10 grid place-items-center'>
         <div className='absolute bg-cloud-background w-full h-full bg-cover bg-no-repeat bg-center opacity-5'></div>
 
         <img

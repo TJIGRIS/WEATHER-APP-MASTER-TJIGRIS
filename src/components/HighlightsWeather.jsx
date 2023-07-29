@@ -39,7 +39,7 @@ export function HighlightsWeather () {
             <span className='text-[40px]'>%</span>
           </div>
 
-          <div className='flex flex-col justify-between w-[320px] text-text-alt'>
+          <div className='flex flex-col justify-between w-full sm:w-[320px] text-text-alt'>
             <div className='flex justify-between'>
               <p>0</p>
               <p>50</p>
@@ -47,7 +47,7 @@ export function HighlightsWeather () {
             </div>
             <input
               type='range'
-              className='w-full bg-secondary'
+              className='w-full '
               min={0}
               max={100}
               value={allWeather[0]?.humidity}

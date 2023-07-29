@@ -1,5 +1,3 @@
-// 2023-07-30
-
 const mes = {
   1: 'Jan',
   2: 'Feb',
@@ -10,21 +8,6 @@ const mes = {
   7: 'Jul',
   8: 'Aug',
   9: 'Sep',
-  10: 'Oct',
-  11: 'Nov',
-  12: 'Dec'
-}
-
-const mes0 = {
-  '01': 'Jan',
-  '02': 'Feb',
-  '03': 'Mar',
-  '04': 'Apr',
-  '05': 'May',
-  '06': 'Jun',
-  '07': 'Jul',
-  '08': 'Aug',
-  '09': 'Sep',
   10: 'Oct',
   11: 'Nov',
   12: 'Dec'

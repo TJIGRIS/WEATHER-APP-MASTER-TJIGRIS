@@ -26,10 +26,15 @@ export default {
       },
       gridTemplateColumns: {
         layout: 'repeat(auto-fit, minmax(min(120px, 100%), 1fr))',
-        'layout-alt': 'repeat(auto-fit, minmax(min(500px, 100%), 1fr))'
+        'layout-alt': 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))'
       },
       boxShadow: {
         card: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
+      },
+      screens: {
+        '2xl': '1100px',
+        '3xl': '1530px',
+        '4xl': '1750px'
       }
     }
   },

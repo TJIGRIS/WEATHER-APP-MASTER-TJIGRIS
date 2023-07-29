@@ -6,10 +6,12 @@ export function AsideWeather () {
   const { isSearch } = useWeatherContext()
 
   return (
-    <aside className='min-w-[459px] py-[42px] bg-primary h-[100vh] flex flex-col justify-between items-center'>
-      <SearchCity />
+    <aside className='bg-red-50 min-w-full lg:min-w-[459px]'>
+      <div className='flex flex-col lg:fixed min-w-full lg:min-w-[459px] py-[42px] bg-primary min-h-screen justify-between items-center'>
+        <SearchCity />
 
-      {isSearch === false && <InfoAside />}
+        {isSearch === false && <InfoAside />}
+      </div>
     </aside>
   )
 }

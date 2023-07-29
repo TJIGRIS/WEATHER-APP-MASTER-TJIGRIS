@@ -25,8 +25,6 @@ function DayWeather ({ dt_txt, temp_max, temp_min, description, units }) {
 export function DaysWeather () {
   const { forecast, units } = useWeatherContext()
 
-  console.log(forecast)
-
   return (
     <ul className='grid grid-cols-layout gap-[26px]'>
       {forecast.map(

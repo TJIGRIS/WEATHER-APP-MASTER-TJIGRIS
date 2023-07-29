@@ -6,7 +6,7 @@ export function SearchCity () {
   const { isSearch } = useWeatherContext()
 
   return (
-    <header className='w-full px-[46px]'>
+    <header className='w-full px-[16px] lg:px-[46px]'>
       {isSearch === false && <ButtonAside />}
 
       {isSearch && <SearchCityView />}
