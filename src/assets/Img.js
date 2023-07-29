@@ -32,11 +32,10 @@ export const img = {
   'scattered clouds': LightCloud,
   'few clouds': LightCloud,
   'moderate rain': Shower,
-  'light snow': Snow
-
+  'light snow': Snow,
+  'thunderstorm with rain': HeavyRain
   /*
-  Hail,
-  HeavyRain,
-  Sleet
-  Thunderstorm, */
+  Thunderstorm
+  Hail,,
+  Sleet */
 }
