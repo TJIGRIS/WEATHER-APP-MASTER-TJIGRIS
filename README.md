@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{tjigris.github.io/TODO-APP-TJIGRIS/all}">
+    <a href="https://app.netlify.com/sites/gleeful-salmiakki-5ff1cd/overview">
       Demo
     </a>
     <span> | </span>
