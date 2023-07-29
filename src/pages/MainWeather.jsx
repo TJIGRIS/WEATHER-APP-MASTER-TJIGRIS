@@ -1,16 +1,16 @@
 import { ButtonsMain } from '../components/ButtonsMain'
 import { DaysWeather } from '../components/DaysWeather'
-import { HightlightsWeather } from '../components/HightlightsWeather'
+import { HighlightsWeather } from '../components/HighlightsWeather'
 
 export function MainWeather () {
   return (
-    <div className='p-[42px] w-full'>
+    <div className='px-[142px] py-[22px] w-full'>
       <section className='flex flex-col justify-between h-full'>
         <ButtonsMain />
 
         <main className='flex flex-col gap-[42px]'>
           <DaysWeather />
-          <HightlightsWeather />
+          <HighlightsWeather />
         </main>
 
         <footer>

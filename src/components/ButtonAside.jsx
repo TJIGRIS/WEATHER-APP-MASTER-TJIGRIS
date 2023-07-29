@@ -2,7 +2,11 @@ import { BiCurrentLocation } from 'react-icons/bi'
 import { useWeatherContext } from '../context/WeatherProvider'
 
 export function ButtonAside () {
-  const { isSearch, setIsSearch } = useWeatherContext()
+  const { isSearch, setIsSearch, getGeoLocation } = useWeatherContext()
+
+  const handleGetGeoLocation = () => {
+    getGeoLocation()
+  }
 
   const handleOpen = () => {
     setIsSearch(!isSearch)
@@ -14,7 +18,9 @@ export function ButtonAside () {
         <p>Search for places</p>
       </button>
 
-      <button className='w-10 h-10 rounded-full bg-accent grid place-items-center text-white hover:bg-background-alt transition-colors duration-300 ease-linear'>
+      <button
+        className='w-10 h-10 rounded-full bg-accent grid place-items-center text-white hover:bg-background-alt transition-colors duration-300 ease-linear'
+        onClick={handleGetGeoLocation}>
         <BiCurrentLocation size={24} />
       </button>
     </section>

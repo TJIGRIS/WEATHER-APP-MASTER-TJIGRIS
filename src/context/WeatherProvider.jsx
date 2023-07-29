@@ -1,5 +1,11 @@
-import { createContext, useContext, useEffect, useReducer } from 'react'
-import { getCity, getWeather } from '../services/WeatherApi'
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer
+} from 'react'
+import { getCity, getForecast, getWeather } from '../services/WeatherApi'
 
 const WeatherContext = createContext()
 
@@ -13,13 +19,18 @@ export function useWeatherContext () {
   return context
 }
 
-export const initianStates = {
+export const initialStates = {
   isSearch: false,
   search: 'London',
   allWeather: [],
   city: [],
   forecast: [],
-  loadingSearch: false
+  loadingSearch: false,
+  units: { unit: 'metric', symbol: '°C' },
+  position: {
+    latitude: 0,
+    longitude: 0
+  }
 }
 
 export const COMMENT_TYPES = {
@@ -27,7 +38,9 @@ export const COMMENT_TYPES = {
   setSearch: 'setSearch',
   setWeather: 'setWeather',
   setCity: 'setCity',
-  setForecast: 'setForecast'
+  setForecast: 'setForecast',
+  setUnits: 'setUnits',
+  setPosition: 'setPosition'
 }
 
 export const reducer = (state, action) => {
@@ -69,12 +82,37 @@ export const reducer = (state, action) => {
     }
   }
 
+  if (type === COMMENT_TYPES.setUnits) {
+    return {
+      ...state,
+      units: payload
+    }
+  }
+
+  if (type === COMMENT_TYPES.setPosition) {
+    return {
+      ...state,
+      position: payload
+    }
+  }
+
   return { ...state }
 }
 
 export function WeatherProvider ({ children }) {
-  const [{ isSearch, search, allWeather, city, loadingSearch }, dispatch] =
-    useReducer(reducer, initianStates)
+  const [
+    {
+      isSearch,
+      search,
+      allWeather,
+      city,
+      forecast,
+      loadingSearch,
+      units,
+      position
+    },
+    dispatch
+  ] = useReducer(reducer, initialStates)
 
   const setIsSearch = (payload) => {
     dispatch({ type: COMMENT_TYPES.setIsSearch, payload })
@@ -92,6 +130,18 @@ export function WeatherProvider ({ children }) {
     dispatch({ type: COMMENT_TYPES.setWeather, payload })
   }
 
+  const setForecast = (payload) => {
+    dispatch({ type: COMMENT_TYPES.setForecast, payload })
+  }
+
+  const saveUnits = (payload) => {
+    dispatch({ type: COMMENT_TYPES.setUnits, payload })
+  }
+
+  const savePosition = (payload) => {
+    dispatch({ type: COMMENT_TYPES.setPosition, payload })
+  }
+
   const saveCity = async () => {
     const result = await getCity(search)
 
@@ -99,15 +149,43 @@ export function WeatherProvider ({ children }) {
   }
 
   const saveWeather = async (lat, lon) => {
-    const result = await getWeather(lat, lon)
+    const result = await getWeather(lat, lon, units.unit)
 
     setWeather(result)
-    setIsSearch(!isSearch)
+    setIsSearch(false)
+  }
+
+  const saveForecast = async (lat, lon) => {
+    const result = await getForecast(lat, lon, units.unit)
+
+    setForecast(result)
+  }
+
+  const getGeoLocation = () => {
+    if (!navigator.geolocation) {
+      saveWeather(2.2582868, -77.2500906)
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords
+
+        saveWeather(latitude, longitude)
+        saveForecast(latitude, longitude)
+        savePosition({ latitude, longitude })
+      })
+    }
   }
 
   useEffect(() => {
+    getGeoLocation()
     saveCity()
   }, [])
+
+  useMemo(() => {
+    saveWeather(position.latitude, position.longitude)
+    saveForecast(position.latitude, position.longitude)
+  }, [units])
 
   return (
     <WeatherContext.Provider
@@ -117,10 +195,16 @@ export function WeatherProvider ({ children }) {
         allWeather,
         city,
         loadingSearch,
+        forecast,
+        units,
         setIsSearch,
         setSearch,
         saveCity,
-        saveWeather
+        saveWeather,
+        saveForecast,
+        saveUnits,
+        savePosition,
+        getGeoLocation
       }}>
       {children}
     </WeatherContext.Provider>

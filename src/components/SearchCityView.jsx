@@ -2,9 +2,19 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import { useWeatherContext } from '../context/WeatherProvider'
 
-const City = ({ name, country, lat, lon, saveWeather }) => {
+const City = ({
+  name,
+  country,
+  lat,
+  lon,
+  saveWeather,
+  saveForecast,
+  savePosition
+}) => {
   const handleSaveWeather = () => {
     saveWeather(lat, lon)
+    saveForecast(lat, lon)
+    savePosition({ latitude: lat, longitude: lon })
   }
 
   return (
@@ -23,8 +33,16 @@ const City = ({ name, country, lat, lon, saveWeather }) => {
 }
 
 export function SearchCityView () {
-  const { isSearch, city, setIsSearch, setSearch, saveCity, saveWeather } =
-    useWeatherContext()
+  const {
+    isSearch,
+    city,
+    setIsSearch,
+    setSearch,
+    saveCity,
+    saveWeather,
+    saveForecast,
+    savePosition
+  } = useWeatherContext()
 
   const handleClose = () => {
     setIsSearch(!isSearch)
@@ -69,7 +87,13 @@ export function SearchCityView () {
 
       <ul className='flex flex-col gap-3'>
         {city.map((city, index) => (
-          <City key={index} {...city} saveWeather={saveWeather} />
+          <City
+            key={index}
+            {...city}
+            saveWeather={saveWeather}
+            saveForecast={saveForecast}
+            savePosition={savePosition}
+          />
         ))}
       </ul>
     </section>
